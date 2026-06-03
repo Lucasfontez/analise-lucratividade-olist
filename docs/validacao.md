@@ -22,7 +22,7 @@ o resultado pronto, não teria validado nada.
 
 Os números bateram nas cinco regiões:
 
-![Validação do frete por região no Excel](<img width="718" height="254" alt="Captura de tela 2026-06-03 175459" src="https://github.com/user-attachments/assets/c81f4f9d-9e17-4130-97a0-51ee7437cfc5" />)
+![Validação do frete por região no Excel](../assets/validacao_frete_dinamica.png)
 
 A diferença nas casas decimais é só arredondamento. O frete médio e o preço médio
 também bateram, o que valida tanto o numerador quanto o denominador do cálculo.
