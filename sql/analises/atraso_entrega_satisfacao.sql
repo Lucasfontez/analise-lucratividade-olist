@@ -33,7 +33,7 @@ SELECT
 	END AS faixa_atraso,
 	COUNT(*) AS qtd_pedidos,
 	ROUND(AVG(avaliacao_pedido), 2) AS nota_media,
-	ROUND(AVG(avaliacao_pedido), 1) AS atraso_medio_dias
+	ROUND(AVG(dias_atraso), 1) AS atraso_medio_dias
 FROM Entregas
 GROUP BY faixa_atraso
 ORDER BY faixa_atraso;
