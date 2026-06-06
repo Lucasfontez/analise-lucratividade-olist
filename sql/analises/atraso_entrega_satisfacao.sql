@@ -1,14 +1,16 @@
 /*
-Tese principal da analise: O atraso na entrega derruba a satisfação do cliente.
+Tese principal: o atraso na entrega derruba a satisfação do cliente.
 
-- Mede o atraso (data de entrega real - data prometida) e cruza com a nota
-do review, agrupando em faixas de atraso. 
+Calculei o atraso como a diferença entre a data de entrega real e a data
+prometida, e cruzo junto com a nota do review, agrupando em faixas de atraso.
 
-- Recorte: apenas pedidos entregues (delivered) com as duas datas preenchidas.
+Observação: Só pedidos entregues (delivered) com as duas datas preenchidas.
 
-Resultado: a nota média cai de forma monotônica conforme o atraso aumenta
-de 4,29 (no prazo) para 1,7 (atraso grave +7 dias). Bastam 1-3 dias de
-atraso para a nota perder ~1 ponto. Pontualidade não é diferencial, é piso.
+Insight: a nota cai de forma consistente conforme o atraso piora, de 4,29
+(no prazo) para 1,7 (atraso grave, +7 dias). O salto mais revelador é logo
+no início, onde basta 1 a 3 dias de atraso para a nota perder um ponto inteiro
+(4,29 -> 3,29). Ou seja, não existe "atraso pequeno e inofensivo"
+pontualidade não é diferencial, é piso.
 */
 
 WITH Entregas AS (
