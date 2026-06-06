@@ -20,26 +20,25 @@ não diferencial.
 CREATE OR REPLACE VIEW vw_pedido_analise AS
 SELECT
     o.order_id,
-    r.review_score                                          AS nota,
+    r.review_score AS nota,
     (o.order_delivered_customer_date::date
-       - o.order_purchase_timestamp::date)                  AS dias_entrega,
+       - o.order_purchase_timestamp::date) AS dias_entrega,
     (o.order_delivered_customer_date::date
-       - o.order_estimated_delivery_date::date)             AS dias_atraso,
+       - o.order_estimated_delivery_date::date) AS dias_atraso,
     CASE
         WHEN (o.order_delivered_customer_date::date - o.order_estimated_delivery_date::date) <= 0 THEN 'No prazo'
         WHEN (o.order_delivered_customer_date::date - o.order_estimated_delivery_date::date) <= 3 THEN '1–3 dias'
         WHEN (o.order_delivered_customer_date::date - o.order_estimated_delivery_date::date) <= 7 THEN '4–7 dias'
-        ELSE                                                                                           '+7 dias'
-    END                                                     AS faixa_atraso,
-    c.customer_state                                        AS uf,
-    reg.regiao                                              AS regiao
+        ELSE '+7 dias'
+    END AS faixa_atraso,
+    c.customer_state AS uf,
+    reg.regiao AS regiao
 FROM orders o
-LEFT JOIN order_reviews r ON r.order_id    = o.order_id
-JOIN customers c          ON c.customer_id = o.customer_id
-LEFT JOIN regioes reg     ON reg.uf        = c.customer_state
-WHERE o.order_status = 'delivered'
-  AND o.order_delivered_customer_date  IS NOT NULL
-  AND o.order_estimated_delivery_date  IS NOT NULL;
+LEFT JOIN order_reviews r ON r.order_id = o.order_id
+JOIN customers c ON c.customer_id = o.customer_id
+LEFT JOIN regioes reg ON reg.uf = c.customer_state
+WHERE o.order_status = 'delivered' AND o.order_delivered_customer_date IS NOT NULL
+  AND o.order_estimated_delivery_date IS NOT NULL;
 
 SELECT * FROM vw_pedido_analise LIMIT 100;
 
