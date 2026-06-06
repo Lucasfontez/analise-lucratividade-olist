@@ -96,7 +96,6 @@ Fonte: [Kaggle — Brazilian E-Commerce Public Dataset by Olist](https://www.kag
 ## 👤 Autor
 
 <!-- TODO: seu nome, LinkedIn e e-mail -->
-_(seus dados aqui)_
-
+Lucas Fontes
 <sub>Projeto de portfólio em Análise de Dados.</sub>
 
